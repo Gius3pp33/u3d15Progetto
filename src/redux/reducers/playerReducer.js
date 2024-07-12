@@ -1,4 +1,14 @@
+import { createSelector } from '@reduxjs/toolkit';
 import { SET_CURRENT_SONG } from '../actions';
+
+
+const selectPlayerState = state => state.player;
+
+export const selectCurrentSong = createSelector(
+  [selectPlayerState],
+  player => player.currentSong
+);
+
 
 const initialState = {
   currentSong: null,

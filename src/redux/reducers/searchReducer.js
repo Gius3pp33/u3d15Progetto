@@ -1,3 +1,4 @@
+import { createSelector } from '@reduxjs/toolkit';
 import { FETCH_SONGS_REQUEST, FETCH_SONGS_SUCCESS, FETCH_SONGS_FAILURE } from '../actions';
 
 const initialState = {
@@ -32,5 +33,14 @@ const searchReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+// Selettore base per lo stato delle ricerche
+const selectSearchState = state => state.search;
+
+// Selettore per estrarre le canzoni di un artista specifico
+export const makeSelectSongsByArtist = artist => createSelector(
+  [selectSearchState],
+  search => search.songs[artist] || []
+);
 
 export default searchReducer;

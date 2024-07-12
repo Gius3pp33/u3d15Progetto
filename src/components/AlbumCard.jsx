@@ -1,7 +1,7 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentSong, toggleLike } from '../redux/actions';
 import { Card, Button } from 'react-bootstrap';
+import {  Heart, HeartFill, PlayCircleFill } from 'react-bootstrap-icons';
 
 const AlbumCard = ({ song }) => {
   const dispatch = useDispatch();
@@ -17,16 +17,16 @@ const AlbumCard = ({ song }) => {
   };
 
   return (
-    <Card className="text-center">
-      <Card.Img variant="top" src={song.album.cover_medium} alt="track" />
-      <Card.Body>
-        <Card.Text>
-          Track: "{song.title}"<br />
+    <Card className="text-center cardAlbum">
+      <Card.Img variant="top" className='imgCard' src={song.album.cover_medium} alt="track" />
+      <Card.Body className='bodyCard'>
+        <Card.Text className='textcard'>
+          Track: {song.title}<br />
           Artist: {song.artist.name}
         </Card.Text>
-        <Button variant="primary" onClick={handlePlay}>Play</Button>
-        <Button variant="outline-secondary" onClick={handleLike} className="ml-2">
-          {isLiked ? 'Unlike' : 'Like'}
+        <Button variant="outline-secondary"size='lg' className='border-0' onClick={handlePlay}><PlayCircleFill  /></Button>
+        <Button variant="outline-secondary " onClick={handleLike} className="ml-2 border-0">
+          {isLiked ?  <HeartFill /> : <Heart />}
         </Button>
       </Card.Body>
     </Card>

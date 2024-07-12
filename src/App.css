@@ -5,6 +5,7 @@ body {
     rgb(63, 86, 119) 0%,
     rgba(33, 44, 61, 1) 42%,
     rgb(15, 21, 29) 100%
+    
   );
 }
 
@@ -30,11 +31,17 @@ body {
 .navbar.fixed-left .navbar-collapse .navbar-nav a:hover {
   color: white !important;
 }
-
+#navbarNavAltMarkup {
+  display: flex;
+  align-items: flex-start;
+}
 .navbar.fixed-left .navbar-brand {
   padding-top: 20px;
   padding-bottom: 30px;
   padding-left: 10px;
+}
+.navbar-brand{
+  margin-left: 10px;
 }
 
 ul {
@@ -50,10 +57,16 @@ ul {
 .nav-btn a {
   color: rgb(145, 145, 145);
   text-decoration: none;
+  margin-left: 2px;
 }
-
-.nav-link i {
-  font-size: 1.5em;
+.input-group{
+  width: 200px;
+  margin-left: 10px;
+}
+.nav-link svg {
+  font-size: 1.4em;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .signup-btn {
@@ -96,6 +109,10 @@ ul {
 .bg-container {
   height: 5.5rem;
   background-color: #282828;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .playerControls div {
@@ -109,19 +126,21 @@ ul {
 
 .playerControls  img {
   width: 14px;
-
+  height: 13px;
   filter: brightness(60%);
 }
 
 .playerControls :hover {
   filter: brightness(80%);
-  color: #282828 !important;
+  cursor: pointer;
+  
 }
 
 .progress {
   color: white;
   background-color: #414141;
   height: 3px;
+  margin-top: 12px;
 }
 
 @media screen and (min-width: 1200px) {
@@ -132,7 +151,27 @@ ul {
 }
 
 /*MAIN PAGE SECTION*/
+.cardAlbum{
+  object-fit: cover;
+  height: 340px;
+  background-color: transparent;
+  border: none;
+  width: 200px;
+  
+  
+  
+}
 
+.imgCard{
+  width: 100%;
+
+}
+.textcard{
+  height: 62px;
+}
+.bodyCard{
+  width: 216px;
+}
 .mainLinks {
   margin-top: 1.5rem;
   justify-content: space-evenly;
@@ -174,4 +213,11 @@ ul {
 
 .mainPage img {
   width: 200px;
+}
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+  padding-bottom: 60px; 
+  overflow-y: auto; 
 }

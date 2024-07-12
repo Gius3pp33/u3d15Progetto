@@ -1,39 +1,56 @@
-import React from 'react';
-import { Nav, Navbar, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import logo from '../assets/logo/logo.png';  // Importa il logo dalla cartella assets
+import { Nav, Navbar, Button, Form } from 'react-bootstrap'; // Aggiungi Form da react-bootstrap
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import logo from '../assets/logo/logo.png';
+import { HouseDoorFill, BookFill } from 'react-bootstrap-icons';
+import { fetchSongs } from '../redux/actions';
 
 const Sidebar = () => {
-  const likes = useSelector(state => state.likes);
+  const [searchTerm, setSearchTerm] = useState('');
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    e.preventDefault(); // Evita il comportamento di default del submit
+    console.log('Searching for:', searchTerm);
+    if (searchTerm.trim()) {
+      dispatch(fetchSongs(searchTerm));
+    }
+    setSearchTerm(''); // Resetta il campo di ricerca dopo la ricerca
+  };
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <aside className="col col-2">
       <Navbar expand="md" className="fixed-left justify-content-between" id="sidebar">
         <Navbar.Brand href="index.html">
-          <img src={logo} alt="Spotify Logo" width="131" height="40" /> {/* Utilizza il logo importato */}
+          <img src={logo} alt="Spotify Logo" width="131" height="40" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarNavAltMarkup" />
         <Navbar.Collapse id="navbarNavAltMarkup">
           <Nav className="flex-column">
             <Nav.Link href="#">
-              <i className="bi bi-house-door-fill"></i>&nbsp; Home
+              <HouseDoorFill /> Home
             </Nav.Link>
             <Nav.Link href="#">
-              <i className="bi bi-book-fill"></i>&nbsp; Your Library
+              <BookFill /> Your Library
             </Nav.Link>
-            <div className="input-group mt-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <div className="input-group-append">
-                <Button variant="outline-secondary" className="btn-sm h-100">
+            
+            <Form onSubmit={handleSearch}>
+              <Form.Group className="input-group w-75  mt-3">
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
+                />
+                <Button variant="outline-secondary" type="submit" className=" h-100">
                   GO
                 </Button>
-              </div>
-            </div>
+              </Form.Group>
+            </Form>
           </Nav>
         </Navbar.Collapse>
         <div className="nav-btn">
