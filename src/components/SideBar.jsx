@@ -42,7 +42,7 @@ const Sidebar = () => {
               <Form.Group className="input-group w-75 mt-3">
                 <Form.Control
                   type="text"
-                  placeholder="Search"
+                  placeholder="Search "
                   value={searchTerm}
                   onChange={handleChange}
                 />
