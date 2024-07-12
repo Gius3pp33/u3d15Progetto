@@ -4,15 +4,22 @@ import MainSection from './components/MainSection';
 import Player from './components/Player';
 import './App.css';
 import Sidebar from './components/SideBar';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import YourLibrary from './components/YourLibrary';
 
 const App = () => {
   return (
     <div className="App">
-      <Sidebar />
-      <Container fluid>
-        <MainSection />
-      </Container>
-      <Player />
+      <BrowserRouter>
+        <Sidebar />
+        <Container fluid className="main-container">
+          <Routes>
+            <Route path="/" element={<MainSection />} />
+            <Route path="/your-library" element={<YourLibrary />} />
+          </Routes>
+        </Container>
+        <Player />
+      </BrowserRouter>
     </div>
   );
 };

@@ -5,24 +5,29 @@ import MusicSection from './MusicSection';
 import { Nav } from 'react-bootstrap';
 
 const MainSection = () => {
-  const dispatch = useDispatch();
-  const searchResults = useSelector(state => state.search.songs);
-  const [searchSections, setSearchSections] = useState([]);
-
-  useEffect(() => {
-    dispatch(fetchSongs('queen'));
-    dispatch(fetchSongs('katyperry'));
-    dispatch(fetchSongs('eminem'));
-  }, [dispatch]);
-
-  useEffect(() => {
-    const newSearchSections = Object.keys(searchResults).map(artist => ({
-      title: `Results for "${artist}"`,
-      artist,
-      sectionId: `searchSection_${artist}`
-    }));
-    setSearchSections(newSearchSections);
-  }, [searchResults]);
+    const dispatch = useDispatch();
+    const searchResults = useSelector(state => state.search.songs);
+    const [searchSections, setSearchSections] = useState([]);
+  
+    useEffect(() => {
+      dispatch(fetchSongs('queen'));
+      dispatch(fetchSongs('katyperry'));
+      dispatch(fetchSongs('eminem'));
+    }, [dispatch]);
+  
+    useEffect(() => {
+      const newSearchSections = Object.keys(searchResults)
+        .filter(artist => !searchSections.some(section => section.artist === artist)) // Filtra artisti già presenti
+        .map(artist => ({
+          title: `Section of "${artist}"`,
+          artist,
+          sectionId: `searchSection_${artist}`
+        }));
+  
+      if (newSearchSections.length > 0) {
+        setSearchSections(prevSections => [...newSearchSections, ...prevSections]);
+      }
+    }, [searchResults, searchSections]);
 
   return (
     <div className="mainPage col-md-9 offset-md-3">
@@ -33,7 +38,7 @@ const MainSection = () => {
         <Nav.Link href="#">NEW RELEASES</Nav.Link>
         <Nav.Link href="#">DISCOVER</Nav.Link>
       </Nav>
-     
+      
       {searchSections.map(section => (
         <MusicSection 
           key={section.sectionId}
@@ -42,9 +47,7 @@ const MainSection = () => {
           sectionId={section.sectionId}
         />
       ))}
-       <MusicSection title="Rock Classics" artist="queen" sectionId="rockSection" />
-      <MusicSection title="Pop Culture" artist="katyperry" sectionId="popSection" />
-      <MusicSection title="#HipHop" artist="eminem" sectionId="hipHopSection" />
+      
     </div>
   );
 };

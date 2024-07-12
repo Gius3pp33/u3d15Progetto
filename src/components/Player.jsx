@@ -5,7 +5,7 @@ import prevIcon from '../assets/playerbuttons/prev.png';
 import playIcon from '../assets/playerbuttons/play.png';
 import nextIcon from '../assets/playerbuttons/next.png';
 import repeatIcon from '../assets/playerbuttons/repeat.png';
-import { HeartFill, Heart } from 'react-bootstrap-icons'; 
+import { HeartFill, Heart, ExclamationSquareFill } from 'react-bootstrap-icons'; 
 import { selectCurrentSong } from '../redux/reducers/playerReducer';
 
 const Player = () => {
@@ -19,8 +19,8 @@ const Player = () => {
       <Container fluid className="fixed-bottom bg-container pt-1">
         <Row className="h-100">
           <Col lg={10} className="offset-lg-2">
-            <p className="text-white text-center">
-              Select a song to play
+            <p className="text-white text-center mt-4">
+              Select a song to play <ExclamationSquareFill />
             </p>
           </Col>
         </Row>
@@ -52,7 +52,7 @@ const Player = () => {
                 <Image src={nextIcon} alt="next" className="mx-3" />
                 <Image src={repeatIcon} alt="repeat" className="mx-3" />
               </div>
-              <ProgressBar now={60} className="mt-3" />
+              <ProgressBar now={0} className="mt-3" />
             </Col>
           </Row>
         </Col>
