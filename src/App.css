@@ -113,6 +113,7 @@ ul {
   bottom: 0;
   width: 100%;
   z-index: 1000;
+  
 }
 
 .playerControls div {
@@ -218,7 +219,8 @@ ul {
 .mainPage {
   display: flex;
   flex-direction: column;
-  height: 100vh; 
-  padding-bottom: 60px; 
-  overflow-y: auto; 
+  height: 120vh; 
+  
+  
+
 }

@@ -5,19 +5,22 @@ import MusicSection from './MusicSection';
 import { Nav } from 'react-bootstrap';
 
 const MainSection = () => {
-    const dispatch = useDispatch();
-    const searchResults = useSelector(state => state.search.songs);
-    const [searchSections, setSearchSections] = useState([]);
+    const dispatch = useDispatch(); // Ottengo la funzione dispatch per inviare azioni
+    const searchResults = useSelector(state => state.search.songs);  // Seleziono i risultati delle canzoni dallo stato globale
+   const [searchSections, setSearchSections] = useState([]);  // Stato locale per memorizzare le sezioni di ricerca dinamiche
+
 
     useEffect(() => {
+        // Effettuo la dispatch per ottenere le canzoni degli artisti statici
         const staticArtists = ['queen', 'katyperry', 'eminem'];
         staticArtists.forEach(artist => {
-            dispatch(fetchSongs(artist));
+            dispatch(fetchSongs(artist)); // Fetch delle canzoni per ciascun artista
         });
     }, [dispatch]);
 
     
     useEffect(() => {
+        // Creo nuove sezioni basate sui risultati della ricerca che non sono già nelle sezioni statiche
         const staticArtists = ['queen', 'katyperry', 'eminem'];
         const newSearchSections = Object.keys(searchResults)
             .filter(artist => !staticArtists.includes(artist) && !searchSections.some(section => section.artist === artist))
@@ -26,7 +29,7 @@ const MainSection = () => {
                 artist,
                 sectionId: `searchSection_${artist}`
             }));
-
+            // Aggiungo le nuove sezioni alle sezioni esistenti
         if (newSearchSections.length > 0) {
             setSearchSections(prevSections => [...newSearchSections, ...prevSections]);
         }

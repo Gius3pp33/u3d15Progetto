@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { SET_CURRENT_SONG } from '../actions';
 
-
+// Selettore per ottenere lo stato del player dal Redux store
 const selectPlayerState = state => state.player;
 
 export const selectCurrentSong = createSelector(

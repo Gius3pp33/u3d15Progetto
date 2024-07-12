@@ -7,9 +7,11 @@ import { fetchSongs } from '../redux/actions';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+    // Definisco lo stato locale searchTerm per memorizzare il termine di ricerca
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
 
+  // Funzione per gestire la ricerca quando il form viene inviato
   const handleSearch = (e) => {
     e.preventDefault();
     console.log('Searching for:', searchTerm);
@@ -19,6 +21,7 @@ const Sidebar = () => {
     setSearchTerm('');
   };
 
+  // Funzione per aggiornare lo stato searchTerm quando l'input cambia
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };

@@ -9,7 +9,9 @@ import { HeartFill, Heart, ExclamationSquareFill } from 'react-bootstrap-icons';
 import { selectCurrentSong } from '../redux/reducers/playerReducer';
 
 const Player = () => {
+     // Ottengo la canzone corrente dallo stato globale usando `selectCurrentSong` 
   const currentSong = useSelector(selectCurrentSong);
+  // Ottiengo la lista dei "mi piace" dallo stato globale e verifica se la canzone corrente è nei "mi piace"
   const likes = useSelector(state => state.likes);
   const isLiked = currentSong ? likes.some(like => like.id === currentSong.id) : false;
 

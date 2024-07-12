@@ -2,8 +2,8 @@ import { createSelector } from '@reduxjs/toolkit';
 import { FETCH_SONGS_REQUEST, FETCH_SONGS_SUCCESS, FETCH_SONGS_FAILURE } from '../actions';
 
 const initialState = {
-  songs: {},
-  status: 'idle',
+  songs: {}, // Oggetto per memorizzare le canzoni, indicizzato per query/artista
+  status: 'idle',  // Stato della richiesta: 'idle' (iniziale), 'loading' (in corso), 'succeeded' (completata), 'failed' (fallita)
   error: null,
 };
 
