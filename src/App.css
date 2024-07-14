@@ -119,6 +119,7 @@ ul {
 
 .playerControls div {
   justify-content: space-between;
+  margin-bottom: 22px;
 }
 
 .playerControls div:first-of-type {
@@ -143,6 +144,9 @@ ul {
   background-color: #414141;
   height: 3px;
   margin-top: 12px;
+}
+.artist-image{
+  height: 60px;
 }
 
 @media screen and (min-width: 1200px) {
