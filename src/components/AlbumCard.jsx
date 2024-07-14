@@ -25,7 +25,7 @@ const AlbumCard = ({ song }) => {
           Artist: {song.artist.name}
         </Card.Text>
         <Button variant="outline-secondary"size='lg' className='border-0' onClick={handlePlay}><PlayCircleFill  /></Button>
-        <Button variant="outline-secondary " onClick={handleLike} className="ml-2 border-0">
+        <Button variant="outline-secondary " size='lg' onClick={handleLike} className="ml-2 border-0">
           {isLiked ?  <HeartFill /> : <Heart />}
         </Button>
       </Card.Body>

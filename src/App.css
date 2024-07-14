@@ -7,6 +7,7 @@ body {
     rgb(15, 21, 29) 100%
     
   );
+
 }
 
 /*SIDEBAR SECTION*/
@@ -112,7 +113,7 @@ ul {
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1100;
   
 }
 
@@ -162,6 +163,16 @@ ul {
   
   
 }
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: auto;
+}
+
+.button-group button {
+  margin-right: 10px;
+}
 
 
 .imgCard{
@@ -172,7 +183,11 @@ ul {
   height: 62px;
 }
 .bodyCard{
+
+ 
+  
   width: 216px;
+  height: 100%;
 }
 .mainLinks {
   margin-top: 1.5rem;
@@ -219,8 +234,14 @@ ul {
 .mainPage {
   display: flex;
   flex-direction: column;
-  height: 120vh; 
-  
+  z-index: calc(110vh - 84px);
+  margin-bottom: 5.5rem; 
   
 
+}
+.cardAlbum svg{
+  color:rgb(60, 211, 60);
+}
+.yourLibrary svg {
+  color:rgb(60, 211, 60);
 }
